@@ -36,37 +36,37 @@ As the third range did not properly bracket an output (f(a)*f(b) > 0), the funct
 
 **Implementation/Code:** The following is the code for bisect(a,b,f(),tol)
 
-#include <cmath> //required for log(x), pow(x,e)
-double bisect(double a, double b, double (*f)(double), double tol=pow(10,-8))
-{
-    double fa = f(a);
-    double fb = f(b);
-    //if no sign change in range, method fails. Return an error value outside of range
-    if (fa*fb > 0)
-        return std::min(a,b)-1.0;
+      #include <cmath> //required for log(x), pow(x,e)
+      double bisect(double a, double b, double (*f)(double), double tol=pow(10,-8))
+      {
+          double fa = f(a);
+          double fb = f(b);
+          //if no sign change in range, method fails. Return an error value outside of range
+          if (fa*fb > 0)
+              return std::min(a,b)-1.0;
 
-    //compute iterations required to guarantee accuracy within tol
-    int maxiter = (log(std::abs(a-b)/tol) / log(2)) + 1;
+          //compute iterations required to guarantee accuracy within tol
+          int maxiter = (log(std::abs(a-b)/tol) / log(2)) + 1;
 
-    //bisect the interval repeatedly to find location of root
-    for(int i=0; i<maxiter; i++)
-    {
-        //calculate f() at the midpoint c
-        double c = (a+b)*.5;
-        double fc = f(c);
-        //Divide the interval at the midpoint c
-        if (fa*fc<0)
-        {
-            b=c;
-            fb=fc;
-        }
-        else
-        {
-            a=c;
-            fa=fc;
-        }
-    }
-    return a;
-}
+          //bisect the interval repeatedly to find location of root
+          for(int i=0; i<maxiter; i++)
+          {
+              //calculate f() at the midpoint c
+              double c = (a+b)*.5;
+              double fc = f(c);
+              //Divide the interval at the midpoint c
+              if (fa*fc<0)
+              {
+                  b=c;
+                  fb=fc;
+              }
+              else
+              {
+                  a=c;
+                  fa=fc;
+              }
+          }
+          return a;
+      }
 
 **Last Modified:** September/2017
