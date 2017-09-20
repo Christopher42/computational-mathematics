@@ -12,45 +12,45 @@ Function f(x) gives a real-valued, continuous function on a single variable.
 Double tol is an optional parameter giving the required precision. Defaults to 10^-8 if not otherwise specified.
 
 **Output:**
-Returns a single double, giving the appoximated solution of f(x)=0. If the function fails to converge within 1000000 iterations, it will throw a notConvergentException.
+Returns a double, giving the appoximated solution of f(x)=0. If the function fails to converge within 1000000 iterations, it will throw a notConvergentException.
 
 **Usage/Example:**
 
 In order to call the function functionalIteration, a target function f(x) must first be defined. Example usage code follows:
 
-  #include <iostream>
-  #include <cmath>
-  #include "functionalIteration.h"
+    #include <iostream>
+    #include <cmath>
+    #include "functionalIteration.h"
 
-  double f(double x)
-  {
-      return 3.0*sin(10*x);
-  }
+    double f(double x)
+    {
+        return 3.0*sin(10*x);
+    }
 
-  double g(double x)
-  {
-      return x*exp(-x);
-  }
+    double g(double x)
+    {
+        return x*exp(-x);
+    }
 
-  int main(void)
-  {
-      double froot,groot;
-      try{
-          froot = functionalIteration(-0.00000001,f);
-          std::cout << "Root of f(x) at x=" << froot << std::endl;
-      }
-      catch(notConvergentException& e){
-          std::cout << "Root of f(x) could not be calculated, as series did not converge.\n";
-      }
+    int main(void)
+    {
+        double froot,groot;
+        try{
+            froot = functionalIteration(-0.00000001,f);
+            std::cout << "Root of f(x) at x=" << froot << std::endl;
+        }
+        catch(notConvergentException& e){
+            std::cout << "Root of f(x) could not be calculated, as series did not converge.\n";
+        }
 
-      froot = functionalIteration(0,f);
-      std::cout << "Root of f(x) at x=" << froot << std::endl;
+        froot = functionalIteration(0,f);
+        std::cout << "Root of f(x) at x=" << froot << std::endl;
 
-      groot = functionalIteration(1.05,g);
-      std::cout << "Root of g(x) at x=" << groot << std::endl;
+        groot = functionalIteration(1.05,g);
+        std::cout << "Root of g(x) at x=" << groot << std::endl;
 
-      return 0;
-  }
+        return 0;
+    }
 
 Output from the lines above:
 
@@ -65,26 +65,26 @@ As has been observed, the boiler-plate solution of iterating "x_{k+1} = f(x_k) -
 
 **Implementation/Code:** The following is the code for functionalIteration(a,f,tol)
 
-  //Finds an approximation of a root f(x)=0
-  //Input: a = starting estimate, f = function, tol = maximum accceptable error
-  //Output: double, approximation of some root of f(x)
-  double functionalIteration(double a, double (*f)(double), double tol=pow(10,-8))
-  {
-      int maxIter = 1000000;
-      double error = 10*tol; //force loop to execute at least once
-      double x=a;
-      int count=0;
-      while (error>tol && ++count<maxIter)
-      {
-          //iterate on function x = f(x)-x
-          double xprime = f(x)-x;
-          error = std::abs(x-xprime);
-          x = xprime;
-      }
-      if (count == maxIter)
-          throw notConvergent;
-      else
-          return x;
-  }
+    //Finds an approximation of a root f(x)=0
+    //Input: a = starting estimate, f = function, tol = maximum accceptable error
+    //Output: double, approximation of some root of f(x)
+    double functionalIteration(double a, double (*f)(double), double tol=pow(10,-8))
+    {
+        int maxIter = 1000000;
+        double error = 10*tol; //force loop to execute at least once
+        double x=a;
+        int count=0;
+        while (error>tol && ++count<maxIter)
+        {
+            //iterate on function x = f(x)-x
+            double xprime = f(x)-x;
+            error = std::abs(x-xprime);
+            x = xprime;
+        }
+        if (count == maxIter)
+            throw notConvergent;
+        else
+            return x;
+    }
 
 **Last Modified:** September/2017
