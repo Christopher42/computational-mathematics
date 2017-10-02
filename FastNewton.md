@@ -34,7 +34,7 @@ It may be noted that the given root with initial value of x=0 was "nan", or, "no
 Function f() has roots at x = k*pi/10, making the other calculated roots correct.
 
 
-**Implementation/Code:** The following is the code for bisect(a,b,f(),tol)
+**Implementation/Code:** The following is the code for fastNewton(x,f(),fprime(),tol)
 
     double fastNewton (double x, double (*f)(double), double (*fprime)(double),
       double tol=pow(10,-8))
