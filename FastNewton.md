@@ -49,4 +49,4 @@ Function f() has roots at x = k*pi/10, making the other calculated roots correct
       return x1;
     }
 
-**Last Modified:** September/2017
+**Last Modified:** October/2017
