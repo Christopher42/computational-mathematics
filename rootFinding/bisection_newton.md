@@ -1,4 +1,4 @@
-**Routine Name:**           bisection_newton
+**Routine Name:** bisection_newton
 
 **Author:** Christopher Johnson
 
