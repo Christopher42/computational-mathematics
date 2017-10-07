@@ -18,11 +18,11 @@ Returns a single double, giving the appoximated solution of f(x)=0.
 
 In order to call the function bisect, a target function f(x) must first be defined. The function may then be called as follows:
 ```C++
-double g(double x){ return (x-2)*(x+3); }
-double tol = pow(10,-5);
-std::cout << bisect(-10,0,g) << std::endl; //print function
-std::cout << bisect(0,10,g,tol) << std::endl;
-std::cout << bisect(-5,4,g,tol) << std::endl;
+    double g(double x){ return (x-2)*(x+3); }
+    double tol = pow(10,-5);
+    std::cout << bisect(-10,0,g) << std::endl; //print function
+    std::cout << bisect(0,10,g,tol) << std::endl;
+    std::cout << bisect(-5,4,g,tol) << std::endl;
 ```
 Output from the lines above:
 ```c++
@@ -35,7 +35,7 @@ As the third range did not properly bracket an output (f(a)\*f(b) > 0), the func
 
 
 **Implementation/Code:** The following is the code for bisect(a,b,f(),tol)
-
+```c++
       #include <cmath> //required for log(x), pow(x,e)
       double bisect(double a, double b, double (*f)(double), double tol=pow(10,-8))
       {
@@ -68,5 +68,5 @@ As the third range did not properly bracket an output (f(a)\*f(b) > 0), the func
           }
           return a;
       }
-
+```
 **Last Modified:** September/2017
