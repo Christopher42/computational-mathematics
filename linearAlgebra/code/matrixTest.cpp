@@ -19,8 +19,9 @@ int main (void)
 	Vector v{1,2,3,4,5};
 	std::cout << "Now, let v denote the vector\n";
 	printVector(v);
-	std::cout << "The matrix vector product Bv is therefore\n";
-	printMatrix(matrixVectorProduct(b,v));
+	std::cout << "(B+I)*v is therefore\n";
+	Matrix I_5 = identityMatrix(5);
+	printVector(matrixVectorProduct(matrixAdd(b,I_5),v));
 	std::cout << std::endl;
 
 	Matrix c = {{1,2,3},{4,5,6}};

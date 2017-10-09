@@ -43,6 +43,14 @@ void printMatrix (Matrix m)
 	}
 }
 
+Matrix identityMatrix(int n)
+{
+	Matrix ident(n, Vector(n,0));
+	for (int i=0;i<n;++i)
+		ident[i][i] = 1;
+	return ident;
+}
+
 Matrix matrixAdd(Matrix a, Matrix b)
 {
 	int n = a.size();
@@ -80,15 +88,15 @@ Matrix matrixScale(Matrix a, double s)
 	return sol;
 }
 
-Matrix matrixVectorProduct(Matrix a, Vector v)
+Vector matrixVectorProduct(Matrix a, Vector v)
 {
-	int n = a.size();
-	int m = a[0].size();
-	Matrix sol = a;
+	int m = a.size();
+	int n = a[0].size();
+	Vector sol(m,0);
 
-	for (int i=0;i<n;++i)
-		for (int j=0;j<m;++j)
-			sol[i][j]*=v[j];
+	for (int i=0;i<m;++i)
+		for (int j=0;j<n;++j)
+			sol[i]+=a[i][j]*v[j];
 	return sol;
 }
 
