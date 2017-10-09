@@ -25,7 +25,7 @@ A Matrix must first be defined, and then the method may be called.
 Output from the lines above:
 ```c++
 			B * s is
-      [[5.1,5.1,5.1,5.1,5.1],
+			[[5.1,5.1,5.1,5.1,5.1],
 			 [5.1,5.1,5.1,5.1,5.1],
 			 [5.1,5.1,5.1,5.1,5.1],
 			 [5.1,5.1,5.1,5.1,5.1],
