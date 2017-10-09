@@ -8,7 +8,7 @@
 Calculates the dot product of input Vectors.
 
 **Input:**
-Vector u and Vector v, typedef of std::vector<double>;
+Vector u and Vector v, typedef of std::vector/<double/>;
 
 **Output:**
 A double, indicating the dot product of input vectors.
