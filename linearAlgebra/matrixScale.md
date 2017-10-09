@@ -8,7 +8,7 @@
 Multiplies matrix by scalar
 
 **Input:**
-Matrix a and double s, where Matrix is a typedef of std::vector<std::vector<double>>.
+Matrix a and double s, where Matrix is a typedef of `std::vector<std::vector<double>>`.
 
 **Output:**
 Returns a Matrix, of size equal to the input matrix.

@@ -8,7 +8,7 @@
 Computes the sum of two matrices.
 
 **Input:**
-Matrix a and Matrix b, where Matrix is a typedef of std::vector<std::vector<double>>.
+Matrix a and Matrix b, where Matrix is a typedef of `std::vector<std::vector<double>>`.
 
 **Output:**
 Returns a Matrix, of size equal to the input matrices.

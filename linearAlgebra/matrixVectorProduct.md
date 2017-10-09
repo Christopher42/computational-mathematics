@@ -8,10 +8,10 @@
 Multiplies Matrix by Vector.
 
 **Input:**
-Matrix a and Vector v, where Matrix is a typedef of std::vector<std::vector<double>> and Vector is a typedef of std::vector<double>.
+Matrix a and Vector v, where Matrix is a typedef of `std::vector<std::vector<double>>` and Vector is a typedef of `std::vector<double>`.
 
 **Output:**
-Returns a Vector, typedef of std::vector<double>. The size is equal to the size (number of rows) of input matrix.
+Returns a Vector, typedef of `std::vector<double>`. The size is equal to rows(a).
 
 **Usage/Example:**
 

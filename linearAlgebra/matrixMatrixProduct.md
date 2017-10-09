@@ -8,10 +8,10 @@
 Performs Matrix-Matrix multiplication.
 
 **Input:**
-Matrix a and Matrix b, where Matrix is a typedef of std::vector<std::vector<double>>.
+Matrix a and Matrix b, where Matrix is a typedef of `std::vector<std::vector<double>>`.
 
 **Output:**
-Returns a Matrix, typedef of std::vector<double>. The size is equal rows(a) x cols(b).
+Returns a Matrix, typedef of `std::vector<std::vector<double>>`. The size is equal rows(a) x cols(b).
 
 **Usage/Example:**
 

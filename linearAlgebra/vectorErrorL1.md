@@ -8,7 +8,7 @@
 Calculates the l1 norm of the difference between input Vectors.
 
 **Input:**
-Vector u and Vector v, typedef of std::vector<double>;
+Vector u and Vector v, typedef of `std::vector<double>`;
 
 **Output:**
 A double, indicating the l1 norm of the error between input vectors.

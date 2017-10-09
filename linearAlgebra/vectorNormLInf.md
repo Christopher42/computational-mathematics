@@ -8,7 +8,7 @@
 Calculate the l-infinity norm of input vector.
 
 **Input:**
-Vector v, typedef of std::vector<double>;
+Vector v, typedef of `std::vector<double>`;
 
 **Output:**
 A double, indicating the l-infinity norm of the input value.

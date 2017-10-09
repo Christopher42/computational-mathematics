@@ -8,7 +8,7 @@
 Computes the l-infinity norm of input matrix.
 
 **Input:**
-Matrix m, typedef of std::vector<std::vector<double>>.
+Matrix m, typedef of `std::vector<std::vector<double>>`.
 
 **Output:**
 Returns a double, giving the computed l-infinity norm of the matrix.

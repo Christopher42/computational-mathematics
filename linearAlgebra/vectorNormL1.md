@@ -8,7 +8,7 @@
 Calculates the l1 norm of input vector.
 
 **Input:**
-Vector v, typedef of std::vector<double>;
+Vector v, typedef of `std::vector<double>`;
 
 **Output:**
 A double, indicating the l1 norm of the input value.
