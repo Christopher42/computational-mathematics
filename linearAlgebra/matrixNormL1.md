@@ -18,11 +18,11 @@ Returns a double, giving the computed l1 norm of the matrix.
 A Matrix must first be defined, and then the method may be called.
 ```C++
     Matrix a(5, Vector{-2,-1,0,1,2}); \\Creates a vector with 5 rows of [-2,-1,0,-1,-2]
-    std::cout << "The l1 matrix norm of A is " << matrixNormL1(a) << std::endl;
+    std::cout << "The l1 matrix norm of A is " << matrixNormL1(a) << ".\n";
 ```
 Output from the lines above:
 ```c++
-      The l1 matrix norm of A is 10
+      The l1 matrix norm of A is 10.
 ```
 
 
