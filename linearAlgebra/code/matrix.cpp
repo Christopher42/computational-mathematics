@@ -90,12 +90,12 @@ Matrix matrixScale(Matrix a, double s)
 
 Vector matrixVectorProduct(Matrix a, Vector v)
 {
-	int m = a.size();
-	int n = a[0].size();
+	int n = a.size();
+	int m = a[0].size();
 	Vector sol(m,0);
 
-	for (int i=0;i<m;++i)
-		for (int j=0;j<n;++j)
+	for (int i=0;i<n;++i)
+		for (int j=0;j<m;++j)
 			sol[i]+=a[i][j]*v[j];
 	return sol;
 }

@@ -2,8 +2,8 @@
 #define MATRIX_H
 
 #include <vector>
-#include "vectorCode.h"
 
+typedef std::vector<double> Vector;
 typedef std::vector<std::vector<double>> Matrix;
 
 double matrixNormL1 (Matrix m);
