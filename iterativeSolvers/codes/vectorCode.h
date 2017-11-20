@@ -5,6 +5,9 @@
 
 typedef std::vector<double> Vector;
 
+Vector vectorScale (Vector v, double s);
+Vector vectorDiff (Vector u, Vector v);
+
 double vectorNormL1 (Vector v);
 double vectorNormL2 (Vector v);
 double vectorNormLInf (Vector v);

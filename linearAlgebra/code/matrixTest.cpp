@@ -1,9 +1,12 @@
 #include "matrix.h"
+#include "vectorCode.h"
 #include <iostream>
 
 int main (void)
 {
-	Matrix a(5, Vector{-2,-1,0,1,2});
+	Matrix a;
+	a.push_back(Vector({1,2}));
+	a.push_back(Vector({1,1}));
 	std::cout << "Let A be defined as the matrix\n";
 	printMatrix(a);
 	std::cout << "Then the l1 matrix norm of A is " << matrixNormL1(a) << " and the l-infinity matrix norm of A is " << matrixNormLInf(a) << std::endl;

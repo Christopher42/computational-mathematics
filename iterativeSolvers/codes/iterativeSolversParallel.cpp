@@ -1,8 +1,8 @@
 #include "matrix.h"
 #include "vectorCode.h"
-#include "iterativeSolvers.h"
+#include "iterativeSolversParallel.h"
 
-int jacobi(Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
+int p_jacobi(Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
 {
 	int n = A.size();
 	if (maxIter == 0) //makes default maxIter=n
@@ -14,6 +14,7 @@ int jacobi(Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol
 	while (k++<maxIter and err>tol*tol)
 	{
 		// x = D^-1((L+U)x-b)
+		#pragma omp parallel for
 		for (int i=0;i<n;++i)
 		{
 			double sum = 0.0;
@@ -33,37 +34,7 @@ int jacobi(Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol
 	return k;
 }
 
-int gaussSeidel (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
-{
-	int n = A.size();
-	if (maxIter == 0)
-		maxIter = n;
-	double err = 10*tol;
-	Vector x_old = x;
-	int k=0;
-
-	while (k++<maxIter and err>tol*tol)
-	{
-		for (int i=0;i<n;++i)
-		{
-			double sum = 0;
-			for (int j=0;j<i;++j)
-				sum+=A[i][j]*x[j];
-			for (int j=i+1;j<n;++j)
-				sum+=A[i][j]*x[j];
-			x[i]=(b[i]-sum)/A[i][i];
-		}
-
-		// err = error^2 = L2err(x,x_old)^2
-		err = 0.0;
-		for (int i=0;i<n;++i)
-			err += (x[i]-x_old[i])*(x[i]-x_old[i]);
-		x_old = x;
-	}
-	return k;
-}
-
-int steepestDescent (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
+int p_steepestDescent (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
 {
 	int n = A.size();
 	int k=0;
@@ -83,9 +54,11 @@ int steepestDescent (Matrix const &A, Vector const &b, Vector & x, int maxIter, 
 	{
 		//s_k = A*p_k
 		Vector s(n,0);
+		#pragma omp parallel for
 		for (int i=0;i<n;++i)
 			for (int j=0;j<n;++j)
 				s[i]+=A[i][j]*p[j];
+
 		//alpha_k = delta_k / (r_k \dot s_k)
 		double alpha = 0;
 		for (int i=0;i<n;++i)
@@ -106,7 +79,7 @@ int steepestDescent (Matrix const &A, Vector const &b, Vector & x, int maxIter, 
 	return k;
 }
 
-int conjugateGradient (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
+int p_conjugateGradient (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
 {
 	int n = A.size();
 	if (maxIter == 0)
@@ -128,6 +101,7 @@ int conjugateGradient (Matrix const &A, Vector const &b, Vector & x, int maxIter
 	{
 		//s_k = A*p_k
 		Vector s(n,0);
+		#pragma omp parallel for
 		for (int i=0;i<n;++i)
 			for (int j=0;j<n;++j)
 				s[i]+=A[i][j]*p[j];
@@ -157,56 +131,7 @@ int conjugateGradient (Matrix const &A, Vector const &b, Vector & x, int maxIter
 	return k;
 }
 
-//alt code for conjGradient with all the function calls
-// int conjugateGradient(Matrix const &A, Vector const &b,
-//         Vector &x0, int maxIter, double tol)
-// {   
-//     int n = b.size();
-//     if (maxIter == 0)
-//     	maxIter = n;
-//     Vector x1(n,0);
-//     Vector r0(n,0);
-   
-//     Vector Ax0 = matrixVectorProduct(A, x0);
-   
-//     for(int i = 0; i < n; i ++){
-//         r0[i] = b[i] - Ax0[i];
-//     }
-   
-//     double delta0 = dotProduct(r0,r0);
-//     double b_delta = dotProduct(b,b);
-   
-//     int k = 0;
-    
-//     Vector p0 = r0;
-   
-//     while(delta0 > tol*tol*b_delta and k < maxIter){
-       
-//         Vector s = matrixVectorProduct(A, p0);
-       
-//         double alpha = delta0/dotProduct(p0,s);
-     
-//         for(int i = 0; i < n; i++){
-//             x1[i] = x0[i] + alpha*p0[i];
-//             r0[i] = r0[i] - alpha*s[i];
-//         }
-       
-//         double delta1 = dotProduct(r0, r0);
-       
-//         for(int i = 0; i < n; i++){
-//             p0[i] = r0[i] + (delta1/delta0)*p0[i];
-//         }
-        
-//         k++;
-        
-//         delta0 = delta1;
-//         x0 = x1;
-        
-//     }
-//     return k;
-// }
-
-double powerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
+double p_powerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
 {
 	int n = A.size();
 	Vector y = matrixVectorProduct(A,x);
@@ -227,6 +152,7 @@ double powerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
 		
 		// Vector s = A*x;
 		Vector s(n,0);
+		#pragma omp parallel for
 		for (int i=0;i<n;++i)
 			for (int j=0;j<n;++j)
 				s[i]+=A[i][j]*x[j];
@@ -242,12 +168,12 @@ double powerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
 	return lambda;
 }
 
-double inversePowerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
+double p_inversePowerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
 {
 	int n = A.size();
 	//s = A_inv*x;
 	Vector y(n,.5);
-	jacobi(A,x,y,40);
+	p_jacobi(A,x,y,40);
 	double lambda = 0.0;
 	double err = 10*tol;
 	int k = 0;
@@ -265,7 +191,7 @@ double inversePowerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
 		
 		// Vector s = A_inv*x;
 		Vector s(n,.5);
-		jacobi(A,x,s,40);
+		p_jacobi(A,x,s,40);
 
 		// lambda_new = dotProduct(x,s);
 		double lambda_new = 0.0;

@@ -1,17 +1,8 @@
 #include <iostream>
 #include <random>
-#include "iterativeSolvers.h"
 #include "vectorCode.h"
 #include "matrix.h"
-
-Vector vectorDiff(Vector x, Vector y)
-{
-	int n=x.size();
-	Vector v(n,0);
-	for (int i=0;i<n;++i)
-		v[i]=x[i]-y[i];
-	return v;
-}
+#include "iterativeSolvers.h"
 
 Matrix randPositiveDefMatrix(int n, std::uniform_real_distribution<>dis, std::mt19937 gen)
 {
@@ -52,19 +43,20 @@ int main (void)
 	Matrix A = randPositiveDefMatrix(n,dis,gen);
 	Vector b = randVect(n,dis,gen);
 	Vector x(n,.5);
+	Vector x_0;
 
 	// Matrix A{{500,1,1},{1,500,1},{1,1,500}};
 	// Vector b{1004,1004,1004};
 	// Vector x{1,1,1};
 
 	//Jacobi test
-	Vector x_0 = x;
+	x_0 = x;
 	std::cout << "Jacobi converges in ";
 	std::cout << jacobi(A,b,x_0);
 	std::cout << " iterations.\n";
 	printMatrix(x_0);
 
-	// //GS test
+	//GS test
 	x_0 = x;
 	std::cout << "Gauss-Seidel converges in ";
 	std::cout << gaussSeidel(A,b,x_0);
@@ -78,18 +70,25 @@ int main (void)
 	std::cout << " iterations.\n";
 	std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
 
-	// //Conjugate Gradient
+	//Conjugate Gradient
 	x_0 = x;
 	std::cout << "Conjugate Gradient converges in ";
 	std::cout << conjugateGradient(A,b,x_0);
 	std::cout << " iterations.\n";
 	std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
 
-	// //Conjugate Gradient 2
-	x_0 = x;
-	std::cout << "Conjugate Gradient 2 converges in ";
-	std::cout << bonjugateGradient(A,b,x_0);
-	std::cout << " iterations.\n";
-	std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
+	//power method
+	x_0 = b;
+	double lambda = powerMethod(A,x_0);
+	std::cout << "Largest eigenvalue (by power method) is ";
+	std::cout << lambda << std::endl;
+
+	//inverse power method
+	x_0 = b;
+	lambda = inversePowerMethod(A,x_0);
+	std::cout << "Smallest eigenvalue (by inverse power method) is ";
+	std::cout << lambda << std::endl;
+
+
 	return 0;
 }

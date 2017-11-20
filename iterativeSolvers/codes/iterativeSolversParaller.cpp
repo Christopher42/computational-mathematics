@@ -157,123 +157,50 @@ int conjugateGradient (Matrix const &A, Vector const &b, Vector & x, int maxIter
 	return k;
 }
 
-//alt code for conjGradient with all the function calls
-// int conjugateGradient(Matrix const &A, Vector const &b,
-//         Vector &x0, int maxIter, double tol)
-// {   
-//     int n = b.size();
-//     if (maxIter == 0)
-//     	maxIter = n;
-//     Vector x1(n,0);
-//     Vector r0(n,0);
+int bonjugateGradient(Matrix const &A, Vector const &b,
+        Vector &x0, int maxIter, double tol)
+{   
+    int n = b.size();
+    if (maxIter == 0)
+    	maxIter = n;
+    Vector x1(n,0);
+    Vector r0(n,0);
    
-//     Vector Ax0 = matrixVectorProduct(A, x0);
+    Vector Ax0 = matrixVectorProduct(A, x0);
    
-//     for(int i = 0; i < n; i ++){
-//         r0[i] = b[i] - Ax0[i];
-//     }
+    for(int i = 0; i < n; i ++){
+        r0[i] = b[i] - Ax0[i];
+    }
    
-//     double delta0 = dotProduct(r0,r0);
-//     double b_delta = dotProduct(b,b);
+    double delta0 = dotProduct(r0,r0);
+    double b_delta = dotProduct(b,b);
    
-//     int k = 0;
+    int k = 0;
     
-//     Vector p0 = r0;
+    Vector p0 = r0;
    
-//     while(delta0 > tol*tol*b_delta and k < maxIter){
+    while(delta0 > tol*tol*b_delta and k < maxIter){
        
-//         Vector s = matrixVectorProduct(A, p0);
+        Vector s = matrixVectorProduct(A, p0);
        
-//         double alpha = delta0/dotProduct(p0,s);
+        double alpha = delta0/dotProduct(p0,s);
      
-//         for(int i = 0; i < n; i++){
-//             x1[i] = x0[i] + alpha*p0[i];
-//             r0[i] = r0[i] - alpha*s[i];
-//         }
+        for(int i = 0; i < n; i++){
+            x1[i] = x0[i] + alpha*p0[i];
+            r0[i] = r0[i] - alpha*s[i];
+        }
        
-//         double delta1 = dotProduct(r0, r0);
+        double delta1 = dotProduct(r0, r0);
        
-//         for(int i = 0; i < n; i++){
-//             p0[i] = r0[i] + (delta1/delta0)*p0[i];
-//         }
+        for(int i = 0; i < n; i++){
+            p0[i] = r0[i] + (delta1/delta0)*p0[i];
+        }
         
-//         k++;
+        k++;
         
-//         delta0 = delta1;
-//         x0 = x1;
+        delta0 = delta1;
+        x0 = x1;
         
-//     }
-//     return k;
-// }
-
-double powerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
-{
-	int n = A.size();
-	Vector y = matrixVectorProduct(A,x);
-	double lambda = 0.0;
-	double err = 10*tol;
-	int k = 0;
-	while (k++<maxIter and err > tol)
-	{
-		// x =  y * (1/||y||);
-		// double y_norm = vectorNormL2(y);
-		// x = vectorScale(y,1.0/y_norm);
-		double y_norm = 0.0;
-		for (int i=0; i<n; i++)
-			y_norm+=y[i]*y[i];
-		y_norm = sqrt(y_norm);
-		for(int i=0;i<n;i++)
-			x[i] = y[i]*(1/y_norm);
-		
-		// Vector s = A*x;
-		Vector s(n,0);
-		for (int i=0;i<n;++i)
-			for (int j=0;j<n;++j)
-				s[i]+=A[i][j]*x[j];
-
-		// lambda_new = dotProduct(x,s);
-		double lambda_new = 0.0;
-		for(int i=0;i<n;++i)
-			lambda_new+=x[i]*s[i];
-
-		err = abs(lambda - lambda_new);
-		lambda = lambda_new;
-	}
-	return lambda;
-}
-
-double inversePowerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
-{
-	int n = A.size();
-	//s = A_inv*x;
-	Vector y(n,.5);
-	jacobi(A,x,y,40);
-	double lambda = 0.0;
-	double err = 10*tol;
-	int k = 0;
-	while (k++<maxIter and err > tol)
-	{
-		// x =  y * / ||y||;
-		// double y_norm = vectorNormL2(y);
-		// x = vectorScale(y,1.0/y_norm);
-		double y_norm = 0.0;
-		for (int i=0; i<n; i++)
-			y_norm+=y[i]*y[i];
-		y_norm = sqrt(y_norm);
-		for(int i=0;i<n;i++)
-			x[i] = y[i]*(1/y_norm);
-		
-		// Vector s = A_inv*x;
-		Vector s(n,.5);
-		jacobi(A,x,s,40);
-
-		// lambda_new = dotProduct(x,s);
-		double lambda_new = 0.0;
-		for(int i=0;i<n;++i)
-			lambda_new+=x[i]*s[i];
-
-		err = abs(lambda - lambda_new);
-		lambda = lambda_new;
-	}
-	return (1/lambda);
+    }
+    return k;
 }

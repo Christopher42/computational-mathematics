@@ -2,6 +2,8 @@
 #include <cmath>
 #include <iostream>
 
+typedef std::vector<double> Vector;
+
 double vectorNormL1 (Vector v)
 {
 	double sum = 0.0;
@@ -27,7 +29,7 @@ double vectorNormLInf (Vector v)
 	return maxElement;
 }
 
-inline std::vector<double> vectorDiff (Vector u, Vector v)
+Vector vectorDiff (Vector u, Vector v)
 {
 	int n = u.size();
 
@@ -35,6 +37,16 @@ inline std::vector<double> vectorDiff (Vector u, Vector v)
 	for(int i=0;i<n;i++)
 		diff[i] = v[i]-u[i];
 	return diff;
+}
+
+Vector vectorScale (Vector v, double s)
+{
+	int n = v.size();
+
+	Vector u (n, 0);
+	for(int i=0;i<n;i++)
+		u[i] = v[i]*s;
+	return u;
 }
 
 double vectorErrorL1 (Vector u, Vector v)
