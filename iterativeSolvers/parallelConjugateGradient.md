@@ -1,13 +1,13 @@
-**Routine Name:** conjugateGradient
+**Routine Name:** p_conjugateGradient
 
 **Author:** Christopher Johnson
 
 **Language:** C++. Tested with g++ compiler.
 
-**Declared in** "iterativeSolvers.h"
+**Declared in** "iterativeSolversParallel.h"
 
 **Description/Purpose:** 
-Using the Conjugate Gradient method, computes an approximate solution to the equation Ax=b, where A and b are known.
+Using the Conjugate Gradient method, computes an approximate solution to the equation Ax=b, where A and b are known. Parallel implementation.
 
 **Input:**
 Matrix const &A - input matrix
@@ -24,7 +24,7 @@ Returns an int indicating the number of iterations to solution.
 
 ```C++
 #include <iostream>
-#include "iterativeSolvers.h" //this contains conjugateGradient Method
+#include "iterativeSolversParallel.h" //this contains p_conjugateGradient Method
 #include "vectorCode.h" //contains printVector()
 
 int main (void)
@@ -34,7 +34,7 @@ int main (void)
 	Vector x{1,1,1};
 
 	//Conjugate Gradient test
-	int i = conjugateGradient(A,b,x,25);
+	int i = p_conjugateGradient(A,b,x,25);
 	std::cout << i << " iterations to solution.\n";
 	printVector(x);
 }
@@ -46,9 +46,9 @@ Output from the lines above:
 ```
 
 
-**Implementation/Code:** The following is the code for conjugateGradient( A, b, x, (maxIter), (tol))
+**Implementation/Code:** The following is the code for p_conjugateGradient( A, b, x, (maxIter), (tol))
 ```c++
-int conjugateGradient (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
+int p_conjugateGradient (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
 {
 	int n = A.size();
 	if (maxIter == 0)
@@ -70,6 +70,7 @@ int conjugateGradient (Matrix const &A, Vector const &b, Vector & x, int maxIter
 	{
 		//s_k = A*p_k
 		Vector s(n,0);
+		#pragma omp parallel for
 		for (int i=0;i<n;++i)
 			for (int j=0;j<n;++j)
 				s[i]+=A[i][j]*p[j];

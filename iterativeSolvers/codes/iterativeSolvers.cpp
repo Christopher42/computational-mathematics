@@ -216,8 +216,6 @@ double powerMethod (Matrix const & A, Vector &x, int maxIter, double tol)
 	while (k++<maxIter and err > tol)
 	{
 		// x =  y * (1/||y||);
-		// double y_norm = vectorNormL2(y);
-		// x = vectorScale(y,1.0/y_norm);
 		double y_norm = 0.0;
 		for (int i=0; i<n; i++)
 			y_norm+=y[i]*y[i];

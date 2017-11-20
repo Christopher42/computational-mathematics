@@ -24,7 +24,7 @@ Returns an int indicating the number of iterations to solution.
 
 ```C++
 #include <iostream>
-#include "iterativeSolvers.h" //this contains Jacobi Method
+#include "iterativeSolvers.h" //this contains steepestDescent Method
 #include "vectorCode.h" //contains printVector()
 
 int main (void)

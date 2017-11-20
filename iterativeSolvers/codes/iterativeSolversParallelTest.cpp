@@ -41,7 +41,6 @@ int main (void)
     std::uniform_real_distribution<> dis(0.0, 1.0);
 	std::cout << "Max number of threads: " << omp_get_max_threads() << std::endl;
 
-	// std::vector<int> N = {500};
 	std::vector<int> N = {1,2,4,10,21,46,100,215,464,1000,2154};
 	std::vector<double> jacobiTime(N.size());
 	std::vector<double> steepestDescentTime(N.size());
@@ -66,7 +65,7 @@ int main (void)
 		double p_c_time = 0;
 		double p_p_time = 0;
 		double p_ip_time = 0;
-		for (int r=0;r<7;++r)
+		for (int r=0;r<3;++r)
 		{
 			//initialization
 			int n = N[i];
@@ -152,16 +151,16 @@ int main (void)
 
 
 		}
-		jacobiTime[i] = j_time/7;
-		steepestDescentTime[i] = s_time/7;
-		conjugateGradientTime[i] = c_time/7;
-		powerMethodTime[i] = p_time/7;
-		inversePowerMethodTime[i] = ip_time/7;
-		p_jacobiTime[i] = p_j_time/7;
-		p_steepestDescentTime[i] = p_s_time/7;
-		p_conjugateGradientTime[i] = p_c_time/7;
-		p_powerMethodTime[i] = p_p_time/7;
-		p_inversePowerMethodTime[i] = p_ip_time/7;
+		jacobiTime[i] = j_time/3;
+		steepestDescentTime[i] = s_time/3;
+		conjugateGradientTime[i] = c_time/3;
+		powerMethodTime[i] = p_time/3;
+		inversePowerMethodTime[i] = ip_time/3;
+		p_jacobiTime[i] = p_j_time/3;
+		p_steepestDescentTime[i] = p_s_time/3;
+		p_conjugateGradientTime[i] = p_c_time/3;
+		p_powerMethodTime[i] = p_p_time/3;
+		p_inversePowerMethodTime[i] = p_ip_time/3;
 	}
 	std::cout << "Jacobi time\n";
 	std::cout << "n\tSerial\tParallel\n";

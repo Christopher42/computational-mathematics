@@ -34,6 +34,38 @@ int p_jacobi(Matrix const &A, Vector const &b, Vector & x, int maxIter, double t
 	return k;
 }
 
+int p_gaussSeidel (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
+{
+	int n = A.size();
+	if (maxIter == 0)
+		maxIter = n;
+	double err = 10*tol;
+	Vector x_old = x;
+	int k=0;
+
+	while (k++<maxIter and err>tol*tol)
+	{
+		for (int i=0;i<n;++i)
+		{
+			double sum = 0;
+			#pragma omp parallel for
+			for (int j=0;j<i;++j)
+				sum+=A[i][j]*x[j];
+			#pragma omp parallel for
+			for (int j=i+1;j<n;++j)
+				sum+=A[i][j]*x[j];
+			x[i]=(b[i]-sum)/A[i][i];
+		}
+
+		// err = error^2 = L2err(x,x_old)^2
+		err = 0.0;
+		for (int i=0;i<n;++i)
+			err += (x[i]-x_old[i])*(x[i]-x_old[i]);
+		x_old = x;
+	}
+	return k;
+}
+
 int p_steepestDescent (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
 {
 	int n = A.size();
