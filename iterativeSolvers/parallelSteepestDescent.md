@@ -29,7 +29,7 @@ Returns an int indicating the number of iterations to solution.
 
 int main (void)
 {
-	Matrix A{{500,1,1},{1,500,1},{1,1,500}};
+	Matrix A{ {500,1,1},{1,500,1},{1,1,500} };
 	Vector b{1004,1004,1004};
 	Vector x{1,1,1};
 
