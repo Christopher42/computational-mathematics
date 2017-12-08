@@ -4,7 +4,7 @@
 
 **Language:** C++. Tested with g++ compiler.
 
-**Declared in** "interpolation.h"
+**Declared in** ["interpolation.h"](https://github.com/Christopher42/computational-mathematics/blob/master/interpolation/code/interpolation.h)
 
 **Description/Purpose:** 
 Given the Newton form of the polynomial, evaluate at a given point. Note that this form should be used only for interpolation, never extrapolation.
