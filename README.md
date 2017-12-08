@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+### Software Manual
+## C++ Linear Algebra and Numerical Library
 
-You can use the [editor on GitHub](https://github.com/Christopher42/computational-mathematics/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This library initially written for [MATH4610](https://jvkoebbe.github.io/math4610/main) course at Utah State University, taught by Joe Koebbe.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+1. Root finding methods
+  1. [bisection method](https://christopher42.github.io/computational-mathematics/rootFinding/bisection.md)
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Christopher42/computational-mathematics/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+All code provided without waranty. Pull requests welcome. Please contact me through my github (Christopher42) with any questions.
