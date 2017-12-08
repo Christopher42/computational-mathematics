@@ -24,28 +24,28 @@ Two Matrices must first be defined, and then the method may be called.
 ```
 Output from the lines above:
 ```c++
-			The matrix sum A + B is
-      [[-1,0,1,2,3],
-			 [-1,0,1,2,3],
-			 [-1,0,1,2,3],
-			 [-1,0,1,2,3],
-			 [-1,0,1,2,3]]
+The matrix sum A + B is
+[[-1,0,1,2,3],
+[-1,0,1,2,3],
+[-1,0,1,2,3],
+[-1,0,1,2,3],
+[-1,0,1,2,3]]
 ```
 
 
 **Implementation/Code:** The following is the code for matrixAdd(a,b)
 ```c++
-			Matrix matrixAdd(Matrix a, Matrix b)
-			{
-				int n = a.size();
-				int m = a[0].size();
-				Matrix sol (m, Vector(n,0));
+Matrix matrixAdd(Matrix a, Matrix b)
+{
+    int n = a.size();
+    int m = a[0].size();
+    Matrix sol (m, Vector(n,0));
+    
+    for (int i=0;i<n;++i)
+        for (int j=0;j<m;++j)
+	    sol[i][j] = a[i][j] + b[i][j];
 
-				for (int i=0;i<n;++i)
-					for (int j=0;j<m;++j)
-						sol[i][j] = a[i][j] + b[i][j];
-
-				return sol;
-			}
+    return sol;
+}
 ```
 **Last Modified:** October/2017
