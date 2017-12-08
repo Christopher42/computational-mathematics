@@ -54,4 +54,4 @@ This library initially written for [MATH4610](https://jvkoebbe.github.io/math461
 
 ### Support or Contact
 
-All code provided as-is, without waranty. Pull requests welcome. Please contact me through my github (Christopher42) with any questions.
+All code provided as-is, without warranty. Pull requests welcome. Please contact me through my github (Christopher42) with any questions.
