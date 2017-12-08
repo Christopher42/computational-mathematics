@@ -22,7 +22,6 @@ Returns an int indicating the number of iterations to solution.
 
 **Usage/Example:**
 
-{% raw %}
 ```C++
 #include <iostream>
 #include "iterativeSolvers.h" //this contains conjugateGradient Method
@@ -30,7 +29,7 @@ Returns an int indicating the number of iterations to solution.
 
 int main (void)
 {
-	Matrix A{{500,1,1},{1,500,1},{1,1,500}};
+	Matrix A{ {500,1,1},{1,500,1},{1,1,500} };
 	Vector b{1004,1004,1004};
 	Vector x{1,1,1};
 
@@ -40,7 +39,6 @@ int main (void)
 	printVector(x);
 }
 ```
-{% endraw %}
 Output from the lines above:
 ```c++
 1 iterations to solution.
