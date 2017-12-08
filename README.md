@@ -13,11 +13,11 @@ This library initially written for [MATH4610](https://jvkoebbe.github.io/math461
     7. [hybrid bisection-newton](https://christopher42.github.io/computational-mathematics/rootFinding/bisection_newton)
 2. Matrix and Vector Code
     1. [dot product](https://christopher42.github.io/computational-mathematics/linearAlgebra/dotProduct)
-    2. [vector norm (l1)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorNormL1)
-    3. [vector norm (l12)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorNormL2)
-    4. [vector norm (l-infinity)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorNormLInf)
-    5. [vector error (l1)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorErrorL1)
-    6. [vector error (l2)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorErrorL2)
+    2. [vector norm (L-1)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorNormL1)
+    3. [vector norm (L-2)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorNormL2)
+    4. [vector norm (L-infinity)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorNormLInf)
+    5. [vector error (L-1)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorErrorL1)
+    6. [vector error (L-2)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorErrorL2)
     7. [vector erro (l-infinity)](https://christopher42.github.io/computational-mathematics/linearAlgebra/vectorErrorLInf)
     8. [matrix addition](https://christopher42.github.io/computational-mathematics/linearAlgebra/matrixAdd)
     9. [matrix subtraction](https://christopher42.github.io/computational-mathematics/linearAlgebra/matrixSub)
@@ -26,8 +26,8 @@ This library initially written for [MATH4610](https://jvkoebbe.github.io/math461
     12. [matrix-matrix product](https://christopher42.github.io/computational-mathematics/linearAlgebra/matrixMatrixProduct)
     13. [parallel matrix-vector product](https://christopher42.github.io/computational-mathematics/linearAlgebra/parallelMatrixVectorProduct)
     14. [parallel matrix-matrix product](https://christopher42.github.io/computational-mathematics/linearAlgebra/parallelMatrixMatrixProduct)
-    15. [matrix norm (l1)](https://christopher42.github.io/computational-mathematics/linearAlgebra/matrixNormL1)
-    16. [matrix norm (l-infinity)](https://christopher42.github.io/computational-mathematics/linearAlgebra/matrixNormLInf)
+    15. [matrix norm (L-1)](https://christopher42.github.io/computational-mathematics/linearAlgebra/matrixNormL1)
+    16. [matrix norm (L-infinity)](https://christopher42.github.io/computational-mathematics/linearAlgebra/matrixNormLInf)
 3. Linear solvers
     1. Sequential
         1. [jacobi](https://christopher42.github.io/computational-mathematics/iterativeSolvers/jacobi)
