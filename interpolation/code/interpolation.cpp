@@ -1,4 +1,5 @@
 #include "interpolation.h"
+#include <iostream>
 
 Vector newtonInterpolation(const Vector & abscissae, const Vector & values)
 {
@@ -24,4 +25,19 @@ double evaluateNewtonForm(const Vector & abscissae, const Vector & coefficients,
 		val += coefficients[i];
 	}
 	return val;
+}
+
+void printNewtonForm(const Vector & abscissae, const Vector & coefficients)
+{
+	int n = abscissae.size();
+	std::cout << "f(x)=" << coefficients[0];
+	for (int i=1;i<n;++i)
+	{
+		std::cout << " + " << coefficients[i];
+		for (int j=0;j<i;j++)
+		{
+			std::cout << "(x-" << abscissae[j] << ")";
+		}
+	}
+	std::cout << std::endl;
 }

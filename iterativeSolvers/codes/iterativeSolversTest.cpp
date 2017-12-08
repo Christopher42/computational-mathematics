@@ -37,13 +37,13 @@ int main (void)
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0.0, 1.0);
     
- //    int n;
- //    std::cout << "N=";
- //    std::cin >> n;
-	// Matrix A = randPositiveDefMatrix(n,dis,gen);
-	// Vector b = randVect(n,dis,gen);
-	// Vector x(n,.5);
-	// Vector x_0;
+    int n;
+    std::cout << "N=";
+    std::cin >> n;
+	Matrix A = randPositiveDefMatrix(n,dis,gen);
+	Vector b = randVect(n,dis,gen);
+	Vector x(n,.5);
+	Vector x_0;
 
 	// int n = 3;
 	// Matrix A{{25,1,1},{1,25,1},{1,1,25}};
@@ -57,33 +57,33 @@ int main (void)
 	// Vector x(n,.5);
 	// Vector x_0;
 
-	// //Jacobi test
-	// x_0 = x;
-	// std::cout << "Jacobi converges in ";
-	// std::cout << jacobi(A,b,x_0);
-	// std::cout << " iterations.\n";
-	// printMatrix(x_0);
+	//Jacobi test
+	x_0 = x;
+	std::cout << "Jacobi converges in ";
+	std::cout << jacobi(A,b,x_0);
+	std::cout << " iterations.\n";
+	printMatrix(x_0);
 
-	// //GS test
-	// x_0 = x;
-	// std::cout << "Gauss-Seidel converges in ";
-	// std::cout << gaussSeidel(A,b,x_0);
-	// std::cout << " iterations.\n";
-	// std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
+	//GS test
+	x_0 = x;
+	std::cout << "Gauss-Seidel converges in ";
+	std::cout << gaussSeidel(A,b,x_0);
+	std::cout << " iterations.\n";
+	std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
 
-	// //Steepest Descent
-	// x_0 = x;
-	// std::cout << "Steepest Descent converges in ";
-	// std::cout << steepestDescent(A,b,x_0);
-	// std::cout << " iterations.\n";
-	// std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
+	//Steepest Descent
+	x_0 = x;
+	std::cout << "Steepest Descent converges in ";
+	std::cout << steepestDescent(A,b,x_0);
+	std::cout << " iterations.\n";
+	std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
 
-	// //Conjugate Gradient
-	// x_0 = x;
-	// std::cout << "Conjugate Gradient converges in ";
-	// std::cout << conjugateGradient(A,b,x_0);
-	// std::cout << " iterations.\n";
-	// std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
+	//Conjugate Gradient
+	x_0 = x;
+	std::cout << "Conjugate Gradient converges in ";
+	std::cout << conjugateGradient(A,b,x_0);
+	std::cout << " iterations.\n";
+	std::cout << "err = " << vectorNormL1(vectorDiff(matrixVectorProduct(A,x_0),b)) << std::endl;
 
 	//power method
 	x_0 = b;
