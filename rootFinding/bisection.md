@@ -1,8 +1,10 @@
-**Routine Name:**           bisect
+**Routine Name:** bisect
 
 **Author:** Christopher Johnson
 
 **Language:** C++. Tested with g++ compiler.
+
+**Declared in** "bisectionMethod.h"
 
 **Description/Purpose:** This routine will approximate the a solution to the root finding problem f(x)=0, guaranteed within a user input tolerance. The given function f(x) must be a continuous function on one variable.
 

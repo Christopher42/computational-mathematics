@@ -46,7 +46,7 @@ Output from the lines above:
 ```
 
 
-**Implementation/Code:** The following is the code for gaussSeider(A, b, x, (maxIter), (tol))
+**Implementation/Code:** The following is the code for gaussSeidel(A, b, x, (maxIter), (tol))
 ```c++
 int gaussSeidel (Matrix const &A, Vector const &b, Vector & x, int maxIter, double tol)
 {
