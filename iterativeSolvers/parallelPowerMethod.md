@@ -29,7 +29,7 @@ Returns a double containing that largest eigenvalue of A.
 int main (void)
 {
 	int n = 2;
-	Matrix A{{12,7},{3,4}};
+	Matrix A{ {12,7},{3,4} };
 	Vector x(n,.5);
 
 	//Power Method test
