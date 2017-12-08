@@ -22,6 +22,7 @@ Returns an int indicating the number of iterations to solution.
 
 **Usage/Example:**
 
+{% raw %}
 ```C++
 #include <iostream>
 #include "iterativeSolvers.h" //this contains conjugateGradient Method
@@ -39,6 +40,7 @@ int main (void)
 	printVector(x);
 }
 ```
+{% endraw %}
 Output from the lines above:
 ```c++
 1 iterations to solution.
