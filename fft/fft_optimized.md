@@ -1,6 +1,6 @@
 **Routine Name:** fft_optimized
 
-**Author:** Christopher Johnson
+**Author:** Rosetta Code (https://rosettacode.org/wiki/Fast_Fourier_transform#C.2B.2B), modified by Christopher Johnson
 
 **Language:** C++. Tested with g++ compiler.
 
