@@ -1,8 +1,11 @@
 ### Software Manual
 ## C++ Linear Algebra and Numerical Library
 
-This library initially written for [MATH4610](https://jvkoebbe.github.io/math4610/main) course at Utah State University, taught by Joe Koebbe.
+This library was initially written for [MATH4610](https://jvkoebbe.github.io/math4610/main) course at Utah State University, taught by Joe Koebbe. Ongoing development is currently focused on developing routines for approximating solutions to differential equations in conjuncting with the followup course [MATH5620](https://jvkoebbe.github.io/math5620/main).
 
+0. Basic Routines
+    1. Machine epsilon
+    2. Absolute error
 1. Root finding methods
     1. [Bisection method](https://christopher42.github.io/computational-mathematics/rootFinding/bisection)
     2. [Functional iteration](https://christopher42.github.io/computational-mathematics/rootFinding/functional_iteration)
@@ -50,6 +53,8 @@ This library initially written for [MATH4610](https://jvkoebbe.github.io/math461
 5. Polynomial interpolation
     1. [Newton interpolation](https://christopher42.github.io/computational-mathematics/interpolation/newtonInterpolation)
     2. [Evaluate Newton form at x=a](https://christopher42.github.io/computational-mathematics/interpolation/evaluateNewtonForm)
+
+6. [Differential Equation Solvers](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/)
 
 
 ### Support or Contact
