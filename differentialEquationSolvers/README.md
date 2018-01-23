@@ -1,6 +1,5 @@
 ## C++ Differential Equation Solvers
 
-1. [Differential Equation Solvers](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/)
 1. Elliptic Solvers
 2. Parabolic Solvers
 3. Hyperbolic Solvers

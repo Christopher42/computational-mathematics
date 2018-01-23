@@ -4,8 +4,9 @@
 This library was initially written for [MATH4610](https://jvkoebbe.github.io/math4610/main) course at Utah State University, taught by Joe Koebbe. Ongoing development is currently focused on developing routines for approximating solutions to differential equations in conjuncting with the followup course [MATH5620](https://jvkoebbe.github.io/math5620/main).
 
 0. Basic Routines
-    1. Machine epsilon
-    2. Absolute error
+    1. [Machine epsilon](https://christopher42.github.io/computational-mathematics/basicRoutines/machineEpsilon)
+    2. [Absolute error](https://christopher42.github.io/computational-mathematics/basicRoutines/absoluteError)
+    3. [Relative error](https://christopher42.github.io/computational-mathematics/basicRoutines/relativeError)
 1. Root finding methods
     1. [Bisection method](https://christopher42.github.io/computational-mathematics/rootFinding/bisection)
     2. [Functional iteration](https://christopher42.github.io/computational-mathematics/rootFinding/functional_iteration)
