@@ -12,7 +12,7 @@
 
 
 **Output:**
-Returns a single double, giving the appoximated solution of f(x)=0.
+
 
 **Usage/Example:**
 
@@ -31,4 +31,4 @@ Output from the lines above:
 ```c++
       
 ```
-**Last Modified:** October/2017
+**Last Modified:** February/2018
