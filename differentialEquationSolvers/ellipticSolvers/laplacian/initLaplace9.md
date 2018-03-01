@@ -20,7 +20,6 @@ Modifies A,U,F such that any solver may be used for AU=F. U is initialized to co
 
 **Usage/Example:**
 
-<explain conditions of usage>
 ```C++
 #include <iostream>
 #include <vector>
