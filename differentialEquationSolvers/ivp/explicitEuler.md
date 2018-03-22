@@ -20,7 +20,7 @@ timesAndValues - a struct containing members time and value of type `std::vector
 **Usage/Example:**
 
 Testing with Newton Cooling.
-```C++
+```c++
 #include "explicitEuler.hpp"
 
 #include <iostream>
