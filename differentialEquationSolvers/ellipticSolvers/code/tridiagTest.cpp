@@ -53,6 +53,21 @@ void testSimpleElliptic(int m)
 	// printElliptic(A);
 }
 
+void testSimpleEllipticWithCG(int m)
+{
+	double a = 0;
+	double b = 1;
+	double ua = 2.5;
+	double ub = 5.0;
+	TridiagSys T = initSimpleElliptic(m, a, b, f, ua, ub);
+	vector<vector<double>> A = convertToSquare(T);
+	vector<double> b = T.b;
+	vector<double> x;
+	x.resize(T.n);
+	conjugateGradient(A,b,x);
+	printVector(x);
+}
+
 void testElliptic(int m)
 {
 	double a = 0;

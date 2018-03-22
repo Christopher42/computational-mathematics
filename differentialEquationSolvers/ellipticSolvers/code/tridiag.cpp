@@ -2,6 +2,22 @@
 #include <vector>
 #include "tridiag.h"
 
+using std::vector;
+
+vector<vector<double>> convertToSquare (TridiagSys s)
+{
+	vector<vector<double>> r();
+	for int (i=0;i<s.n;++i)
+	{
+		if (i>0)
+			r[i][i-1] = s.lower[i];
+		r[i][i] = s.main[i];
+		if (i+1<s.n)
+			r[i+1][i] = s.upper[i];
+	}
+	return r;
+}
+
 TridiagSys initSimpleElliptic(int m, double a, double b, double (*f)(double), double u_a, double u_b)
 {
 	TridiagSys system;

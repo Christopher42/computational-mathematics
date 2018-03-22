@@ -21,4 +21,6 @@ void luTridiag(TridiagSys& A);
 std::vector<double> evalLUTridiag(const TridiagSys& A, const std::vector<double>& b);
 std::vector<double> jacobiTridiag( TridiagSys& A, int maxIter=40, double tol=pow(10.0,-8.0));
 
+std::vector<std::vector<double>> convertToSquare (TridiagSys);
+
 #endif

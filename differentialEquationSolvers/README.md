@@ -4,7 +4,7 @@
     1. [5 point Laplacian Solver](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ellipticSolvers/laplacian/initLaplace5)
     2. [9 point Laplacian Solver](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ellipticSolvers/laplacian/initLaplace9)
 2. Initial Value Problems
-	1. [Explicit Euler](https://christopher42.github.io.computational-mathematics/differentialEquationSolvers/ivp/explicitEuler)
+	1. [Explicit Euler](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp/explicitEuler)
 
 ### Support or Contact
 

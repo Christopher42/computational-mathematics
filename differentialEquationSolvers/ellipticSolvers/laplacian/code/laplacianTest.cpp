@@ -19,14 +19,31 @@ void printVec(const Vec& v)
 	std::cout << std::endl;
 }
 
-int main (void)
+void testWithConjugateGradient()
 {
 	int m = 3;
 	Matrix A;
 	Vector F;
 	Vector U(m*m);
-	initLaplace9(m,A,U,F,f);
-	std::cout << gaussSeidel(A,F,U,100,.00000001) << std::endl;
+	initLaplace5(m,A,U,F,f);
+	conjugateGradient(A,F,U,100,.00000001);
 	printVec(U);
+}
+
+void testWithGaussSeidel()
+{
+	int m = 3;
+	Matrix A;
+	Vector F;
+	Vector U(m*m);
+	initLaplace5(m,A,U,F,f);
+	gaussSeidel(A,F,U,100,.00000001);
+	printVec(U);
+}
+
+int main (void)
+{
+	// testWithGaussSeidel();
+	testWithConjugateGradient();
 	return 0;
 }
