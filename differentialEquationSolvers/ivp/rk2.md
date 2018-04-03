@@ -32,7 +32,7 @@ timesAndValues itteratedRK2 (std::function<double(double,double)> F, double y0, 
 	return r;
 }
 ```
-For example output, see simpleTest().
+For example output, see [Exponential Test](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp/simpleTest).
 
 
 **Implementation/Code:** The following is the code for rk2 (f, y, t, dt);

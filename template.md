@@ -17,7 +17,7 @@
 **Usage/Example:**
 
 <explain conditions of usage>
-```C++
+```c++
     
 ```
 Output from the lines above:

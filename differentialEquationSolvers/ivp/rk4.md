@@ -15,7 +15,7 @@ Takes as input: function F: R^2->R, initial value y0, interval bounds a < b, and
 Returns estimated value after next step.
 
 **Usage/Example:**
-example usage in itteratedRK2.
+example usage in itteratedRK4.
 ```c++
 timesAndValues itteratedRK4 (std::function<double(double,double)> F, double y0, double a, double b, double h)
 {
@@ -32,7 +32,7 @@ timesAndValues itteratedRK4 (std::function<double(double,double)> F, double y0, 
 	return r;
 }
 ```
-For example output, see simpleTest().
+For example output, see [Exponential Test](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp/simpleTest).
 
 
 **Implementation/Code:** The following is the code for rk4 (f, y, t, dt);

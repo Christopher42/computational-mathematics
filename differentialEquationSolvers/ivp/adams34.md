@@ -15,8 +15,7 @@ Function F(R^2->R), initial value y0, endpoints a < b, and step size h.
 Returns struct TimeAndValues containing endpoints, mesh, and function values at mesh points.
 
 **Usage/Example:**
-Tested in simpleTest() and logisticTest(). See associated documentation for example code.
-
+Tested in [Exponential Test](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp/simpleTest) and [Logistic Test](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp/logisticTest). See associated documentation for example code.
 
 **Implementation/Code:** The following is the code for adams34(f,y0,a,b,h)
 ```c++
