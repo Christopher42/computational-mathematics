@@ -24,91 +24,84 @@ double rk4 (std::function<double(double,double)> f, double y, double t, double d
 	return u_new;
 }
 
-timesAndValues explicitEuler (std::function<double(double,double)> F, double y0, double a, double b, double h)
+double explicitEuler (std::function<double(double,double)> F, double y0, double a, double b, double h)
 {
-	timesAndValues r;
-	r.a = a;
-	r.b = b;
+	double iter = (b-a)/h;
 	double y = y0;
-	for (double t=a; t<=b; t+=h)
+	double t;
+	for (int i=0;i<iter;++i)
 	{
-		r.time.push_back(t);
-		r.value.push_back(y);
-		y += h * F(t,y);
+		t = a + h*i;
+		y = y + h * F(y,t);
 	}
-	return r;
+	return y;
 }
 
-timesAndValues itteratedRK2 (std::function<double(double,double)> F, double y0, double a, double b, double h)
+double implicitEuler (std::function<double(double,double)> F, double y0, double a, double b, double h)
 {
-	timesAndValues r;
-	r.a = a;
-	r.b = b;
-	double y = y0;
-	for (double t=a; t<=b; t+=h)
+	double iter = (b-a)/h;
+	double y=y0;
+	double t;
+	// u^n+1 = u^n + h*f(u^n+1)
+	for (int i=1;i<iter+1;++i)
 	{
-		r.time.push_back(t);
-		r.value.push_back(y);
+		t = a + h*i;
+		double ynew=y;
+		for (int i=0;i<100;++i)
+		{
+			ynew = y + h*F(ynew,t);
+		}
+		y=ynew;
+	}
+	return y;
+}
+
+double itteratedRK2 (std::function<double(double,double)> F, double y0, double a, double b, double h)
+{
+	double iter = (b-a)/h;
+	double y = y0;
+	double t;
+	for (int i=0;i<iter;++i)
+	{
+		t = a + h*i;
 		y = rk2(F,y,t,h);
 	}
-	return r;
+	return y;
 }
 
-timesAndValues itteratedRK4 (std::function<double(double,double)> F, double y0, double a, double b, double h)
+double itteratedRK4 (std::function<double(double,double)> F, double y0, double a, double b, double h)
 {
-	timesAndValues r;
-	r.a = a;
-	r.b = b;
+	double iter = (b-a)/h;
 	double y = y0;
-	for (double t=a; t<=b; t+=h)
+	double t;
+	for (int i=0;i<iter;++i)
 	{
-		r.time.push_back(t);
-		r.value.push_back(y);
+		t = a + h*i;
 		y = rk4(F,y,t,h);
 	}
-	return r;
+	return y;
 }
 
-timesAndValues adams34 (std::function<double(double,double)> F, double y0, double a, double b, double h)
-{
-	timesAndValues r;
-	r.a = a;
-	r.b = b;
-	double y = y0;
-	double t=a;
-	for (int i=0;i<4;++i)
+double adams34 (std::function<double(double,double)> F, double y0, double a, double b, double h)
+{	
+	double iter = (b-a)/h;
+	double t;
+	double t0 = a;
+	double t1 = a+h;
+	double t2 = a+h*2;
+	double t3 = a+h*3;
+	double u0 = y0;
+	double u1 = rk4(F,u0,t0,h);
+	double u2 = rk4(F,u1,t1,h);
+	double u3 = rk4(F,u2,t2,h);
+	
+	for (int i=4; i<iter+1; ++i)
 	{
-		r.time.push_back(t);
-		r.value.push_back(y);
-		y = rk4(F,y,t,h);
-		t+=h;
+		t = a + h*i;
+		double y = u3 + h/24 * (-9*F(u0,t0) + 37*F(u1,t1) - 59*F(u2,t2) + 55*F(u3,t3));
+		double u4 = u3 + h/24*(F(u1,t1) - 5*F(u2,t2) + 19*F(u3,t3) + 9*F(y,t));
+		u0=u1; u1=u2; u2=u3; u3=u4;
+		t0=t1; t1=t2; t2=t3; t3=t;
 	}
-
-	double u0 = r.value[0];
-	double u1 = r.value[1];
-	double u2 = r.value[2];
-	double u3 = r.value[3];
-	double t0 = r.time[0];
-	double t1 = r.time[1];
-	double t2 = r.time[2];
-	double t3 = r.time[3];
-
-	for (t; t<=b; t+=h)
-	{
-		r.time.push_back(t);
-		r.value.push_back(y);
-		double u4 = u3 + h/24 * (-9*F(u0,t0) + 37*F(u1,t1) - 59*F(u2,t2) + 55*F(u3,t3));
-		y = u3 + h/24*(F(u1,t1) - 5*F(u2,t2) + 19*F(u3,t3) + 9*F(u4,t));
-		u0 = u1; u1=u2; u2=u3; u3=u4;
-		t0 = t1; t1=t2; t2=t3; t3=t;
-	}
-	return r;
-}
-
-void printResultsTable (timesAndValues in)
-{
-	for (int i=0; i<in.time.size(); ++i)
-	{
-		std::cout << "    " << in.time[i] << " " << in.value[i] << std::endl;
-	}
+	return u3;
 }

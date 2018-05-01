@@ -13,8 +13,8 @@ struct timesAndValues
 double rk2 (std::function<double(double,double)> f, double y, double t, double dt);
 double rk4 (std::function<double(double,double)> f, double y, double t, double dt);
 
-timesAndValues explicitEuler (std::function<double(double,double)> F, double y0, double a, double b, double h);
-timesAndValues itteratedRK2 (std::function<double(double,double)> F, double y0, double a, double b, double h);
-timesAndValues itteratedRK4 (std::function<double(double,double)> F, double y0, double a, double b, double h);
-timesAndValues adams34 (std::function<double(double,double)> F, double y0, double a, double b, double h);
-void printResultsTable (timesAndValues in);
+double explicitEuler (std::function<double(double,double)> F, double y0, double a, double b, double h);
+double itteratedRK2 (std::function<double(double,double)> F, double y0, double a, double b, double h);
+double itteratedRK4 (std::function<double(double,double)> F, double y0, double a, double b, double h);
+double adams34 (std::function<double(double,double)> F, double y0, double a, double b, double h);
+double implicitEuler (std::function<double(double,double)> F, double y0, double a, double b, double h);
