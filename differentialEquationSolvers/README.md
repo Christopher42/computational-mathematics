@@ -11,7 +11,10 @@
 	5. [RK4](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp/rk4)
 	6. [Adams34](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp/adams34)
 	7. [Analysis of methods](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp/analysis)
-
+3. Advection
+	1. [upwind](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp2d/upwind)
+	2. [Lax-Wendroff](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp2d/laxWendroff)
+	3. [Beam-Warming](https://christopher42.github.io/computational-mathematics/differentialEquationSolvers/ivp2d/beamWarming)
 
 ### Support or Contact
 
